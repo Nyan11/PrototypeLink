@@ -5,9 +5,8 @@ Class {
 		'schedule',
 		'status'
 	],
-	#category : 'PrototypeLink-example',
-	#package : 'PrototypeLink',
-	#tag : 'example'
+	#category : 'PrototypeLink-Example',
+	#package : 'PrototypeLink-Example'
 }
 
 { #category : 'pyramid-serialized-bloc' }
