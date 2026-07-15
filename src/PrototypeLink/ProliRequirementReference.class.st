@@ -10,9 +10,8 @@ Class {
 	#classInstVars : [
 		'requirementsDictionary'
 	],
-	#category : 'PrototypeLink-core',
-	#package : 'PrototypeLink',
-	#tag : 'core'
+	#category : 'PrototypeLink',
+	#package : 'PrototypeLink'
 }
 
 { #category : 'instance creation' }

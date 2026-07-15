@@ -9,9 +9,8 @@ Class {
 		'announcer',
 		'unique'
 	],
-	#category : 'PrototypeLink-core',
-	#package : 'PrototypeLink',
-	#tag : 'core'
+	#category : 'PrototypeLink',
+	#package : 'PrototypeLink'
 }
 
 { #category : 'accessing' }
