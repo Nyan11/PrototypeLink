@@ -16,7 +16,7 @@ ProliExSimplierTrainModel >> initialize [
 	super initialize.
 	name := (Random new nextIntegerBetween: 1000 and: 9999) printString.
 	time := Time fromSeconds:
-		        (Random new nextIntegerBetween: 21000 and: 86400).
+		        (Random new nextIntegerBetween: 24000 and: 86400).
 	state := #( #arriving #deprating ) shuffled first
 ]
 
@@ -47,7 +47,9 @@ ProliExSimplierTrainModel >> state [
 { #category : 'as yet unclassified' }
 ProliExSimplierTrainModel >> statusColor [
 
-	^ Color white
+	self state = #arriving ifTrue: [
+		^ Smalltalk ui icons iconNamed: #left ].
+	^ Smalltalk ui icons iconNamed: #right
 ]
 
 { #category : 'accessing' }

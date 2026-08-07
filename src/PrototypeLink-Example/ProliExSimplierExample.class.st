@@ -448,9 +448,12 @@ ProliExSimplierExample >> initialize [
 ProliExSimplierExample >> initializeExample [
 
 	self status: {
-			ProliExSimplierSensorModel name: 'Liquid Pressure' value: '5 MPa'.
-			ProliExSimplierSensorModel name: 'Liquid Temperature' value: '55 °C'.
-			ProliExSimplierSensorModel name: 'Radar' value: 'Operational' }.
+			(ProliExSimplierSensorModel name: 'Liquid Pressure' value: '5 MPa').
+			(ProliExSimplierSensorModel
+				 name: 'Liquid Temperature'
+				 value: '55 °C').
+			(ProliExSimplierSensorModel name: 'Radar' value: 'Operational').
+			(ProliExSimplierSensorModel name: 'Traffic Lights' value: 'Operational'). }.
 	self schedule:
 		(((1 to: 20) collect: [ :i | ProliExSimplierTrainModel new ]) sort: [
 			 :a
@@ -460,14 +463,33 @@ ProliExSimplierExample >> initializeExample [
 { #category : 'initialization' }
 ProliExSimplierExample >> initializeRequirements [
 
-	self getEmergencyButtonElement proliAnnotedBy: ProliExSimplierRequirements uxRequirement1.
-	self getCenterElement proliAnnotedBy: ProliExSimplierRequirements uxRequirement2.
-	self getStatusListElement proliAnnotedBy: ProliExSimplierRequirements capellaFunction1.
-	self getScheduleListElement proliAnnotedBy: ProliExSimplierRequirements capellaFunction2.
-	self getDropButtonElement proliAnnotedBy: ProliExSimplierRequirements capellaFunction3.
-	self getRaiseButtonElement proliAnnotedBy: ProliExSimplierRequirements capellaFunction3.
-	self getEmergencyButtonElement proliAnnotedBy: ProliExSimplierRequirements capellaFunction4.
+	self getTimeElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement1.
+	self getScheduleListElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement2.
+	self getCenterElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement3.
+	self getStatusListElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement4.
+	self getRaiseButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement5.
+	self getDropButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement6.
+	self getEmergencyButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements uxRequirement7.
 	
+
+	self getStatusListElement proliAnnotedBy:
+		ProliExSimplierRequirements capellaFunction1.
+	self getScheduleListElement proliAnnotedBy:
+		ProliExSimplierRequirements capellaFunction2.
+	self getDropButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements capellaFunction3.
+	self getRaiseButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements capellaFunction3.
+	self getEmergencyButtonElement proliAnnotedBy:
+		ProliExSimplierRequirements capellaFunction4
+
 ]
 
 { #category : 'accessing' }

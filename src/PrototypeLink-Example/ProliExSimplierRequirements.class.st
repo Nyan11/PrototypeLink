@@ -4136,7 +4136,7 @@ ProliExSimplierRequirements class >> capellaFile [
 
 { #category : 'generated' }
 ProliExSimplierRequirements class >> capellaFunction1 [
-	"Test the proper operation of the system "
+	"Test the proper operation of the system"
 
 	^ ProliRequirementReference
 		  newCapella: self capellaFile
@@ -4172,22 +4172,77 @@ ProliExSimplierRequirements class >> capellaFunction4 [
 
 { #category : 'generated' }
 ProliExSimplierRequirements class >> uxRequirement1 [
-	"The emergency button must bigger than any other button"
+	"The user interface shows the current date and time in the format DD/MM/YYYY and HH:MM:SS."
 
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
-			  'The emergency button must bigger than any other button' ];
-		yourself
+			  'The user interface shows the current date and time in the format DD/MM/YYYY and HH:MM:SS.' ];
+		  yourself
 ]
 
 { #category : 'generated' }
 ProliExSimplierRequirements class >> uxRequirement2 [
-	"The camera view must take most of the space"
+	"The user interface shows the schedules of the different trains of the day."
 
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
-			  'The camera view must take most of the space' ];
+			  'The user interface shows the schedules of the different trains of the day. Each train schedule includes its unique identifier, whether it is arriving at or departing from the train station, and the approximate time it will cross the level crossing.' ];
+		  yourself
+]
+
+{ #category : 'generated' }
+ProliExSimplierRequirements class >> uxRequirement3 [
+	"The user interface shows a real-time camera video stream of the crossing."
+
+	^ ProliRequirementReference new
+		  source: '';
+		  retreiveContent: [ :s |
+			  'The user interface shows a real-time camera video stream of the crossing.' ];
+		  yourself
+]
+
+{ #category : 'generated' }
+ProliExSimplierRequirements class >> uxRequirement4 [
+	"The user interface shows the status of the different devices."
+
+	^ ProliRequirementReference new
+		  source: '';
+		  retreiveContent: [ :s |
+			  'The user interface shows the status of the different devices.' ];
+		  yourself
+]
+
+{ #category : 'generated' }
+ProliExSimplierRequirements class >> uxRequirement5 [
+	"The user interface has a button to manually allow road vehicles to cross the rails."
+
+	^ ProliRequirementReference new
+		  source: '';
+		  retreiveContent: [ :s |
+			  'The user interface has a button to manually allow road vehicles to cross the rails.' ];
+		  yourself
+]
+
+{ #category : 'generated' }
+ProliExSimplierRequirements class >> uxRequirement6 [
+	"The user interface has a button to manually stop road vehicles from crossing the rails."
+
+	^ ProliRequirementReference new
+		  source: '';
+		  retreiveContent: [ :s |
+			  'The user interface has a button to manually stop road vehicles from crossing the rails.' ];
+		  yourself
+]
+
+{ #category : 'generated' }
+ProliExSimplierRequirements class >> uxRequirement7 [
+	"The user interface has a button to cut the power supply to the train in case of an emergency."
+
+	^ ProliRequirementReference new
+		  source: '';
+		  retreiveContent: [ :s |
+			  'The user interface has a button to cut the power supply to the train in case of an emergency.' ];
 		  yourself
 ]
