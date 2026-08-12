@@ -3,7 +3,8 @@ Class {
 	#superclass : 'BlElement',
 	#instVars : [
 		'schedule',
-		'status'
+		'status',
+		'displaySensors'
 	],
 	#category : 'PrototypeLink-Example',
 	#package : 'PrototypeLink-Example'
@@ -14,13 +15,12 @@ ProliExSimplierExample class >> pyramidView [
 	"This class has been generated using Pyramid.
 
 	By: 
-	2026-07-10 16:57:41"
+	2026-08-10 11:27:36"
 
 	<pyStash>
-	^ [ | blinsets1 blinsets2 blinsets3 |
+	^ [ | blinsets1 blinsets2 |
 blinsets1 := BlInsets all: 8.0.
 blinsets2 := BlInsets all: 8.0.
-blinsets3 := BlInsets all: 4.0.
 {(BlElement new
    id: #main;
    layout: BlLinearLayout vertical;
@@ -46,23 +46,77 @@ blinsets3 := BlInsets all: 4.0.
                   constraints vertical fitContent.
                   constraints frame horizontal alignCenter.
                   constraints frame vertical alignCenter ];
-               yourself)};
-         constraintsDo: [:constraints |  constraints horizontal matchParent ];
-         background: (BlPaintBackground new
-               paint: (BlColorPaint new
-                     color: (Color r: 0.15640273704789834 g: 0.15640273704789834 b: 0.15640273704789834 alpha: 1.0);
+               yourself) . 
+            (ToButton new
+               id: #sensorsButton;
+               layout: BlLinearLayout horizontal;
+               background: (BlPaintBackground new
+                     paint: (BlColorPaint new
+                           color: (Color r: 0.19257086999022482 g: 0.20039100684261973 b: 0.2238514173998045 alpha: 1.0);
+                           yourself);
+                     opacity: 1.0;
                      yourself);
-               opacity: 1.0;
-               yourself);
-         yourself) . 
-      (BlElement new
-         id: #panel;
-         layout: BlLinearLayout horizontal;
-         addChildren: {(BlElement new
-               id: #left;
+               border: (BlBorderBuilder new
+                     paint: (BlColorPaint new
+                           color: (Color r: 0.6510263929618768 g: 0.6510263929618768 b: 0.6510263929618768 alpha: 1.0);
+                           yourself);
+                     build);
+               geometry: (BlRoundedRectangleGeometry cornerRadius: 4);
+               constraintsDo: [:constraints |  constraints horizontal fitContent.
+                  constraints vertical exact: 32.0.
+                  constraints frame horizontal alignRight.
+                  constraints frame vertical alignCenter.
+                  constraints padding: (BlInsets top: 4.0 right: 6.0 bottom: 4.0 left: 6.0).
+                  constraints margin: (BlInsets top: 0.0 right: 16.0 bottom: 0.0 left: 16.0) ];
+               middleElement: (ToLabel new
+                     text: (BlRopedText new
+                           rope: (BlAttributeRope attributes: {(BlFontWeightAttribute new
+                                       weight: 600;
+                                       yourself) . 
+                                    (BlFontSizeDefaultAttribute new
+                                       size: 14;
+                                       yourself) . 
+                                    AlbTextParagraphLineSpacingAttribute new . 
+                                    (BlTextForegroundAttribute new
+                                       paint: (Color r: 0.7517106549364614 g: 0.7517106549364614 b: 0.7517106549364614 alpha: 1.0);
+                                       yourself)} rope: (BlCollectionRope new
+                                       collection: 'Sensors';
+                                       yourself));
+                           yourself);
+                     layout: BlFrameLayout new;
+                     constraintsDo: [:constraints |  constraints horizontal fitContent.
+                        constraints vertical fitContent ];
+                     focusability: BlFocusability none;
+                     yourself);
+               startElement: (ToImage new
+                     layout: BlFrameLayout new;
+                     constraintsDo: [:constraints |  constraints horizontal fitContent.
+                        constraints vertical fitContent ];
+                     innerImage: (BlElement new
+                           id: #form;
+                           constraintsDo: [:constraints |  constraints horizontal exact: 16.0.
+                              constraints vertical exact: 16.0.
+                              constraints frame horizontal alignCenter.
+                              constraints frame vertical alignCenter ];
+                           background: (BlImageBackground new
+                                 image: (PyramidExternalRessourceProxy new
+                                       pyramidExternalRessourceSource: (PyramidExternalRessourceSource new
+                                             target: Object;
+                                             selector: #iconNamed:;
+                                             arguments: {'testGreen'};
+                                             yourself);
+                                       yourself);
+                                 opacity: 1.0;
+                                 yourself);
+                           yourself);
+                     innerImageDo: [:i |  i id: #form ];
+                     yourself);
+               yourself) . 
+            (BlElement new
+               id: #SensorsPanel;
                layout: BlLinearLayout vertical;
                addChildren: {(BlTextElement new
-                     id: #time;
+                     id: #Status;
                      text: (BlRopedText new
                            rope: (BlAttributeRope attributes: {(BlFontSizeAttribute new
                                        size: 16;
@@ -73,94 +127,52 @@ blinsets3 := BlInsets all: 4.0.
                                     (BlFontWeightAttribute new
                                        weight: 700;
                                        yourself)} rope: (BlCollectionRope new
-                                       collection: 'Train Schedule';
+                                       collection: 'Status';
                                        yourself));
                            yourself);
                      constraintsDo: [:constraints |  constraints horizontal fitContent.
                         constraints vertical fitContent.
                         constraints frame horizontal alignCenter.
                         constraints frame vertical alignCenter.
-                        constraints padding: blinsets1 ];
+                        constraints padding: (BlInsets all: 8.0) ];
                      yourself) . 
                   (ToListElement new
-                     id: #scheduleList;
+                     id: #statusList;
                      layout: BlLinearLayout vertical;
                      constraintsDo: [:constraints |  constraints horizontal matchParent.
-                        constraints vertical matchParent.
+                        constraints vertical exact: 200.0.
                         constraints margin: (BlInsets all: 4.0) ];
                      yourself)};
-               constraintsDo: [:constraints |  constraints horizontal matchParent.
-                  constraints vertical matchParent.
-                  constraints margin: (BlInsets all: 4.0) ];
+               constraintsDo: [:constraints |  constraints horizontal exact: 300.0.
+                  constraints vertical fitContent.
+                  constraints frame horizontal alignRight.
+                  constraints margin: (BlInsets top: 50.0 right: 0.0 bottom: 0.0 left: 0.0) ];
                background: (BlPaintBackground new
                      paint: (BlColorPaint new
-                           color: (Color r: 0.38025415444770283 g: 0.38025415444770283 b: 0.38025415444770283 alpha: 1.0);
+                           color: (Color r: 0.5650048875855328 g: 0.5650048875855328 b: 0.5650048875855328 alpha: 1.0);
                            yourself);
                      opacity: 1.0;
                      yourself);
                geometry: BlRectangleGeometry new;
-               yourself) . 
-            (BlElement new
-               id: #center;
-               layout: BlLinearLayout vertical;
-               constraintsDo: [:constraints |  constraints horizontal matchParent.
-                  constraints vertical matchParent.
-                  constraints linear weight: 4.
-                  constraints margin: (BlInsets all: 4.0) ];
-               background: (BlPaintBackground new
-                     paint: (BlColorPaint new
-                           color: (Color r: 0.8993157380254154 g: 0.16129032258064516 b: 0.5161290322580645 alpha: 1.0);
-                           yourself);
-                     opacity: 1.0;
+               visibility: BlVisibility gone;
+               yourself)};
+         constraintsDo: [:constraints |  constraints horizontal matchParent ];
+         background: (BlPaintBackground new
+               paint: (BlColorPaint new
+                     color: (Color r: 0.15640273704789834 g: 0.15640273704789834 b: 0.15640273704789834 alpha: 1.0);
                      yourself);
-               geometry: BlRectangleGeometry new;
-               yourself) . 
-            (BlElement new
-               id: #right;
+               opacity: 1.0;
+               yourself);
+         clipChildren: false;
+         elevation: (BlRelativeElevation elevation: 1);
+         yourself) . 
+      (BlElement new
+         id: #panel;
+         layout: BlLinearLayout horizontal;
+         addChildren: {(BlElement new
+               id: #left;
                layout: BlLinearLayout vertical;
                addChildren: {(BlElement new
-                     id: #StatusPanel;
-                     layout: BlLinearLayout vertical;
-                     addChildren: {(BlTextElement new
-                           id: #Status;
-                           text: (BlRopedText new
-                                 rope: (BlAttributeRope attributes: {(BlFontSizeAttribute new
-                                             size: 16;
-                                             yourself) . 
-                                          (BlTextForegroundAttribute new
-                                             paint: (Color r: 1.0 g: 1.0 b: 1.0 alpha: 1.0);
-                                             yourself) . 
-                                          (BlFontWeightAttribute new
-                                             weight: 700;
-                                             yourself)} rope: (BlCollectionRope new
-                                             collection: 'Status';
-                                             yourself));
-                                 yourself);
-                           constraintsDo: [:constraints |  constraints horizontal fitContent.
-                              constraints vertical fitContent.
-                              constraints frame horizontal alignCenter.
-                              constraints frame vertical alignCenter.
-                              constraints padding: blinsets1 ];
-                           yourself) . 
-                        (ToListElement new
-                           id: #statusList;
-                           layout: BlLinearLayout vertical;
-                           constraintsDo: [:constraints |  constraints horizontal matchParent.
-                              constraints vertical exact: 200.0.
-                              constraints margin: (BlInsets all: 4.0) ];
-                           yourself)};
-                     constraintsDo: [:constraints |  constraints horizontal matchParent.
-                        constraints vertical fitContent.
-                        constraints margin: blinsets3 ];
-                     background: (BlPaintBackground new
-                           paint: (BlColorPaint new
-                                 color: (Color r: 0.5650048875855328 g: 0.5650048875855328 b: 0.5650048875855328 alpha: 1.0);
-                                 yourself);
-                           opacity: 1.0;
-                           yourself);
-                     geometry: BlRectangleGeometry new;
-                     yourself) . 
-                  (BlElement new
                      id: #ControlerPanel;
                      layout: BlLinearLayout vertical;
                      addChildren: {(BlTextElement new
@@ -306,7 +318,49 @@ blinsets3 := BlInsets all: 4.0.
                            yourself)};
                      constraintsDo: [:constraints |  constraints horizontal matchParent.
                         constraints vertical matchParent.
-                        constraints margin: blinsets3 ];
+                        constraints margin: (BlInsets all: 4.0) ];
+                     background: (BlPaintBackground new
+                           paint: (BlColorPaint new
+                                 color: (Color r: 0.5650048875855328 g: 0.5650048875855328 b: 0.5650048875855328 alpha: 1.0);
+                                 yourself);
+                           opacity: 1.0;
+                           yourself);
+                     geometry: BlRectangleGeometry new;
+                     yourself) . 
+                  (BlElement new
+                     id: #SchedulePanel;
+                     layout: BlLinearLayout vertical;
+                     addChildren: {(BlTextElement new
+                           id: #ScheduleLabel;
+                           text: (BlRopedText new
+                                 rope: (BlAttributeRope attributes: {(BlFontSizeAttribute new
+                                             size: 16;
+                                             yourself) . 
+                                          (BlTextForegroundAttribute new
+                                             paint: (Color r: 1.0 g: 1.0 b: 1.0 alpha: 1.0);
+                                             yourself) . 
+                                          (BlFontWeightAttribute new
+                                             weight: 700;
+                                             yourself)} rope: (BlCollectionRope new
+                                             collection: 'Train Schedule';
+                                             yourself));
+                                 yourself);
+                           constraintsDo: [:constraints |  constraints horizontal fitContent.
+                              constraints vertical fitContent.
+                              constraints frame horizontal alignCenter.
+                              constraints frame vertical alignCenter.
+                              constraints padding: blinsets1 ];
+                           yourself) . 
+                        (ToListElement new
+                           id: #scheduleList;
+                           layout: BlLinearLayout vertical;
+                           constraintsDo: [:constraints |  constraints horizontal matchParent.
+                              constraints vertical matchParent.
+                              constraints margin: (BlInsets all: 4.0) ];
+                           yourself)};
+                     constraintsDo: [:constraints |  constraints horizontal matchParent.
+                        constraints vertical matchParent.
+                        constraints margin: (BlInsets all: 4.0) ];
                      background: (BlPaintBackground new
                            paint: (BlColorPaint new
                                  color: (Color r: 0.5650048875855328 g: 0.5650048875855328 b: 0.5650048875855328 alpha: 1.0);
@@ -325,6 +379,64 @@ blinsets3 := BlInsets all: 4.0.
                      opacity: 1.0;
                      yourself);
                geometry: BlRectangleGeometry new;
+               yourself) . 
+            (BlElement new
+               id: #center;
+               layout: BlFrameLayout new;
+               addChildren: {(BlElement new
+                     id: #SensorsPanel;
+                     layout: BlLinearLayout vertical;
+                     addChildren: {(BlTextElement new
+                           id: #Status;
+                           text: (BlRopedText new
+                                 rope: (BlAttributeRope attributes: {(BlFontSizeAttribute new
+                                             size: 16;
+                                             yourself) . 
+                                          (BlTextForegroundAttribute new
+                                             paint: (Color r: 1.0 g: 1.0 b: 1.0 alpha: 1.0);
+                                             yourself) . 
+                                          (BlFontWeightAttribute new
+                                             weight: 700;
+                                             yourself)} rope: (BlCollectionRope new
+                                             collection: 'Status';
+                                             yourself));
+                                 yourself);
+                           constraintsDo: [:constraints |  constraints horizontal fitContent.
+                              constraints vertical fitContent.
+                              constraints frame horizontal alignCenter.
+                              constraints frame vertical alignCenter.
+                              constraints padding: (BlInsets all: 8.0) ];
+                           yourself) . 
+                        (ToListElement new
+                           id: #statusList;
+                           layout: BlLinearLayout vertical;
+                           constraintsDo: [:constraints |  constraints horizontal matchParent.
+                              constraints vertical exact: 200.0.
+                              constraints margin: (BlInsets all: 4.0) ];
+                           yourself)};
+                     constraintsDo: [:constraints |  constraints horizontal exact: 300.0.
+                        constraints vertical exact: 300.0.
+                        constraints frame horizontal alignRight ];
+                     background: (BlPaintBackground new
+                           paint: (BlColorPaint new
+                                 color: (Color r: 0.5650048875855328 g: 0.5650048875855328 b: 0.5650048875855328 alpha: 1.0);
+                                 yourself);
+                           opacity: 1.0;
+                           yourself);
+                     geometry: BlRectangleGeometry new;
+                     visibility: BlVisibility hidden;
+                     yourself)};
+               constraintsDo: [:constraints |  constraints horizontal matchParent.
+                  constraints vertical matchParent.
+                  constraints linear weight: 4.
+                  constraints margin: (BlInsets all: 4.0) ];
+               background: (BlPaintBackground new
+                     paint: (BlColorPaint new
+                           color: (Color r: 0.8993157380254154 g: 0.16129032258064516 b: 0.5161290322580645 alpha: 1.0);
+                           yourself);
+                     opacity: 1.0;
+                     yourself);
+               geometry: BlRectangleGeometry new;
                yourself)};
          constraintsDo: [:constraints |  constraints horizontal matchParent.
             constraints vertical matchParent ];
@@ -337,10 +449,75 @@ blinsets3 := BlInsets all: 4.0.
          yourself)};
    constraintsDo: [:constraints |  constraints horizontal matchParent.
       constraints vertical matchParent ];
-   background: (BlTransparentBackground new
-         opacity: 1.0;
-         yourself);
    yourself)} ] value
+]
+
+{ #category : 'pyramid-serialized-bloc' }
+ProliExSimplierExample class >> sensorsView [
+	"This class has been generated using Pyramid.
+
+	By: 
+	2026-08-10 10:12:18"
+
+	<pyStash>
+	^ [
+		  BlElement new
+			  id: #StatusPanel;
+			  layout: BlLinearLayout vertical;
+			  addChildren: {
+					  (BlTextElement new
+						   id: #Status;
+						   text: (BlRopedText new
+								    rope: (BlAttributeRope
+										     attributes: {
+												     (BlFontSizeAttribute new
+													      size: 16;
+													      yourself).
+												     (BlTextForegroundAttribute new
+													      paint: (Color
+															       r: 1.0
+															       g: 1.0
+															       b: 1.0
+															       alpha: 1.0);
+													      yourself).
+												     (BlFontWeightAttribute new
+													      weight: 700;
+													      yourself) }
+										     rope: (BlCollectionRope new
+												      collection: 'Status';
+												      yourself));
+								    yourself);
+						   constraintsDo: [ :constraints |
+								   constraints horizontal fitContent.
+								   constraints vertical fitContent.
+								   constraints frame horizontal alignCenter.
+								   constraints frame vertical alignCenter.
+								   constraints padding: (BlInsets all: 8.0) ];
+						   yourself).
+					  (ToListElement new
+						   id: #statusList;
+						   layout: BlLinearLayout vertical;
+						   constraintsDo: [ :constraints |
+								   constraints horizontal matchParent.
+								   constraints vertical exact: 200.0.
+								   constraints margin: (BlInsets all: 4.0) ];
+						   yourself) };
+			  constraintsDo: [ :constraints |
+					  constraints horizontal matchParent.
+					  constraints vertical fitContent.
+					  constraints margin: (BlInsets all: 4.0) ];
+			  background: (BlPaintBackground new
+					   paint: (BlColorPaint new
+							    color: (Color
+									     r: 0.5650048875855328
+									     g: 0.5650048875855328
+									     b: 0.5650048875855328
+									     alpha: 1.0);
+							    yourself);
+					   opacity: 1.0;
+					   yourself);
+			  geometry: BlRectangleGeometry new;
+			  yourself ] value
 ]
 
 { #category : 'as yet unclassified' }
@@ -370,35 +547,47 @@ ProliExSimplierExample >> getCenterElement [
 ProliExSimplierExample >> getDropButtonElement [
 
 	^ ((((self childWithId: #main) childWithId: #panel) childWithId:
-		    #right) childWithId: #ControlerPanel) childWithId: #drop
+		    #left) childWithId: #ControlerPanel) childWithId: #drop
 ]
 
 { #category : 'as yet unclassified' }
 ProliExSimplierExample >> getEmergencyButtonElement [
 
 	^ ((((self childWithId: #main) childWithId: #panel) childWithId:
-		    #right) childWithId: #ControlerPanel) childWithId: #emergencyButton
+		    #left) childWithId: #ControlerPanel) childWithId:
+		  #emergencyButton
 ]
 
 { #category : 'as yet unclassified' }
 ProliExSimplierExample >> getRaiseButtonElement [
 
 	^ ((((self childWithId: #main) childWithId: #panel) childWithId:
-		    #right) childWithId: #ControlerPanel) childWithId: #raise
+		    #left) childWithId: #ControlerPanel) childWithId: #raise
 ]
 
 { #category : 'as yet unclassified' }
 ProliExSimplierExample >> getScheduleListElement [
 
-	^ (((self childWithId: #main) childWithId: #panel) childWithId: #left)
+	^ ((((self childWithId: #main) childWithId: #panel) childWithId: #left) childWithId: #SchedulePanel)
 		  childWithId: #scheduleList
+]
+
+{ #category : 'as yet unclassified' }
+ProliExSimplierExample >> getSensorsButtonElement [
+
+	^ ((self childWithId: #main) childWithId: #header) childWithId: #sensorsButton
+]
+
+{ #category : 'as yet unclassified' }
+ProliExSimplierExample >> getSensorsPanel [
+
+	^ self getCenterElement childWithId: #SensorsPanel
 ]
 
 { #category : 'as yet unclassified' }
 ProliExSimplierExample >> getStatusListElement [
 
-	^ ((((self childWithId: #main) childWithId: #panel) childWithId:
-		    #right) childWithId: #StatusPanel) childWithId: #statusList
+	^ self getSensorsPanel childWithId: #statusList
 ]
 
 { #category : 'as yet unclassified' }
@@ -415,6 +604,17 @@ ProliExSimplierExample >> initialize [
 			c horizontal matchParent.
 			c vertical matchParent ].
 	self addChildren: self class pyramidView.
+
+
+	displaySensors := false.
+	self getSensorsButtonElement clickAction: [
+			displaySensors := displaySensors not.
+			displaySensors
+				ifFalse: [ self getSensorsPanel visibility: BlVisibility hidden ]
+				ifTrue: [ self getSensorsPanel visibility: BlVisibility visible ] ].
+
+
+
 	self getScheduleListElement nodeBuilder: [ :node :dataItem :holder |
 			node addChild: (ToLabeledIcon new
 					 label: (ToLabel new
@@ -438,8 +638,11 @@ ProliExSimplierExample >> initialize [
 					 startInterspace: 3;
 					 yourself) ].
 	self getCenterElement background:
-		(BlImageBackground image: (self class trainForm magnifyBy: 6.4)).
+		(BlImageBackground image: (self class trainForm magnifyBy: 8.4)).
 	self getRaiseButtonElement enabled: false.
+
+
+
 	self initializeExample.
 	self initializeRequirements
 ]

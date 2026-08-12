@@ -4138,6 +4138,7 @@ ProliExSimplierRequirements class >> capellaFile [
 ProliExSimplierRequirements class >> capellaFunction1 [
 	"Test the proper operation of the system"
 
+	<Requirements: #Example>
 	^ ProliRequirementReference
 		  newCapella: self capellaFile
 		  withId: 'afaab29b-188b-41e4-952e-a6056684abaa'
@@ -4147,6 +4148,7 @@ ProliExSimplierRequirements class >> capellaFunction1 [
 ProliExSimplierRequirements class >> capellaFunction2 [
 	"Implement the arrival procedure"
 
+	<Requirements: #Example>
 	^ ProliRequirementReference
 		  newCapella: self capellaFile
 		  withId: '372d8c41-5f1d-4b59-9dd7-406c027bdafe'
@@ -4156,15 +4158,18 @@ ProliExSimplierRequirements class >> capellaFunction2 [
 ProliExSimplierRequirements class >> capellaFunction3 [
 	"Control road traffic"
 
+	<Requirements: #Example>
 	^ ProliRequirementReference
 		  newCapella: self capellaFile
 		  withId: '12271a97-e1bb-415e-9929-8ce7550c82b9'
+
 ]
 
 { #category : 'generated' }
 ProliExSimplierRequirements class >> capellaFunction4 [
 	"Control the power supply to trains"
 
+	<Requirements: #Example>
 	^ ProliRequirementReference
 		  newCapella: self capellaFile
 		  withId: 'b0ff811a-f491-4bc8-9d76-01bc26429484'
@@ -4174,6 +4179,7 @@ ProliExSimplierRequirements class >> capellaFunction4 [
 ProliExSimplierRequirements class >> uxRequirement1 [
 	"The user interface shows the current date and time in the format DD/MM/YYYY and HH:MM:SS."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4185,6 +4191,7 @@ ProliExSimplierRequirements class >> uxRequirement1 [
 ProliExSimplierRequirements class >> uxRequirement2 [
 	"The user interface shows the schedules of the different trains of the day."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4196,6 +4203,7 @@ ProliExSimplierRequirements class >> uxRequirement2 [
 ProliExSimplierRequirements class >> uxRequirement3 [
 	"The user interface shows a real-time camera video stream of the crossing."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4207,6 +4215,7 @@ ProliExSimplierRequirements class >> uxRequirement3 [
 ProliExSimplierRequirements class >> uxRequirement4 [
 	"The user interface shows the status of the different devices."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4218,6 +4227,7 @@ ProliExSimplierRequirements class >> uxRequirement4 [
 ProliExSimplierRequirements class >> uxRequirement5 [
 	"The user interface has a button to manually allow road vehicles to cross the rails."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4229,6 +4239,7 @@ ProliExSimplierRequirements class >> uxRequirement5 [
 ProliExSimplierRequirements class >> uxRequirement6 [
 	"The user interface has a button to manually stop road vehicles from crossing the rails."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
@@ -4240,6 +4251,7 @@ ProliExSimplierRequirements class >> uxRequirement6 [
 ProliExSimplierRequirements class >> uxRequirement7 [
 	"The user interface has a button to cut the power supply to the train in case of an emergency."
 
+	<Requirements: #Example>
 	^ ProliRequirementReference new
 		  source: '';
 		  retreiveContent: [ :s |
