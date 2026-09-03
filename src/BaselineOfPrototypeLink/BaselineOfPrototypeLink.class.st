@@ -37,3 +37,13 @@ BaselineOfPrototypeLink >> baselineForCommon: spec [
 	"Groups"
 	spec group: 'default' with: #( 'PrototypeLink' 'PrototypeLink-Example' ) "complete version"
 ]
+
+{ #category : 'actions' }
+BaselineOfPrototypeLink >> postload: loader package: packageSpec [
+
+	| helper |
+	"Open helper."
+	helper := #ProliExHelper asClassInEnvironment:
+		                   self class environment.
+	helper openAsUnclosableWindow
+]

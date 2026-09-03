@@ -5,6 +5,7 @@ Class {
 		'uniqueId',
 		'source',
 		'retreiveContent',
+		'metadatas',
 		'verificationProcess'
 	],
 	#classInstVars : [
@@ -26,6 +27,7 @@ ProliRequirementReference class >> newCapella: aDocument withId: anId [
 	| requirement |
 	requirement := self newWithUniqueIdentifiant:
 		               thisContext sender method.
+	requirement metadatas at: #capellaId put: anId.
 	requirement source: aDocument.
 	requirement retreiveContent: [ :document |
 			| capellaDocument idMacro |
@@ -84,7 +86,14 @@ ProliRequirementReference >> hash [
 ProliRequirementReference >> initialize [
 
 	super initialize.
-	verificationProcess := [ true ]
+	verificationProcess := [ true ].
+	metadatas := Dictionary new
+]
+
+{ #category : 'accessing' }
+ProliRequirementReference >> metadatas [
+
+	^ metadatas
 ]
 
 { #category : 'accessing' }
