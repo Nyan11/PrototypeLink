@@ -23,7 +23,8 @@ ProliDynamicLinksRepository class >> announcer [
 ProliDynamicLinksRepository class >> reset [
 
 	<script>
-	unique := nil
+	unique := nil.
+	ProliRequirementReference reset
 ]
 
 { #category : 'accessing' }
@@ -37,19 +38,6 @@ ProliDynamicLinksRepository >> addNewDynamicLink: aProliDynamicLink [
 
 	self isWatching ifFalse: [ ^ self ].
 	self dynamicLinks add: aProliDynamicLink
-]
-
-{ #category : 'as yet unclassified' }
-ProliDynamicLinksRepository >> allLinksWithObject: anObject [
-
-	^ self dynamicLinks select: [ :each | each object = anObject ]
-]
-
-{ #category : 'as yet unclassified' }
-ProliDynamicLinksRepository >> allLinksWithRequirementReference: aRequirementReference [
-
-	^ self dynamicLinks select: [ :each |
-		  each requirementReference = aRequirementReference ]
 ]
 
 { #category : 'accessing' }
@@ -89,6 +77,25 @@ ProliDynamicLinksRepository >> removeSubscription [
 
 	self stopWatching.
 	self class announcer unsubscribe: self
+]
+
+{ #category : 'as yet unclassified' }
+ProliDynamicLinksRepository >> selectAllLinksWith: aBlock [
+
+	^ self dynamicLinks select: aBlock
+]
+
+{ #category : 'as yet unclassified' }
+ProliDynamicLinksRepository >> selectAllLinksWithObject: anObject [
+
+	^ self selectAllLinksWith: [ :each | each object = anObject ]
+]
+
+{ #category : 'as yet unclassified' }
+ProliDynamicLinksRepository >> selectAllLinksWithRequirementReference: aRequirementReference [
+
+	^ self selectAllLinksWith: [ :each |
+		  each requirementReference = aRequirementReference ]
 ]
 
 { #category : 'as yet unclassified' }

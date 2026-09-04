@@ -60,6 +60,13 @@ ProliRequirementReference class >> requirementsDictionary [
 	^ requirementsDictionary ifNil: [ requirementsDictionary := Dictionary new ].
 ]
 
+{ #category : 'initialization' }
+ProliRequirementReference class >> reset [
+
+	<script>
+	requirementsDictionary := nil
+]
+
 { #category : 'comparing' }
 ProliRequirementReference >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."

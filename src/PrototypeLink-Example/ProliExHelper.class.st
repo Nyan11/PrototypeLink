@@ -40,6 +40,39 @@ ProliExSimplierExample new openInSpace.
 "Stop the instrumentalisation and inspect the DynamicLinksRepository."
 ProliDynamicLinksRepository unique stopWatching.
 ProliDynamicLinksRepository unique inspect.
+
+"Now you can analyze the DyanmicLinks."
+"Show me all the objects associated to a requirement."
+Smalltalk tools openWorkspace presenter contents:
+''| idOfCapellaRequirement requirement dynamicLinks prototypeElements |
+
+idOfCapellaRequirement := ''''12271a97-e1bb-415e-9929-8ce7550c82b9''''.
+
+requirement := ProliRequirementReference requirementsDictionary
+	select: [ :each | 
+		each metadatas at: #capellaId 
+		ifPresent: [ :id | id = idOfCapellaRequirement ] 
+		ifAbsent: [ false ]
+	].
+dynamicLinks := (ProliDynamicLinksRepository unique
+	selectAllLinksWithRequirementReference: requirement values first).
+prototypeElements := dynamicLinks 
+	collect: [ :each | each object ].
+
+prototypeElements inspect.''.
+
+"Show me all requirements associated with an element of the prototype"
+Smalltalk tools openWorkspace presenter contents: ''| space header allDynamicLinks |
+
+space := ((BlParallelUniverse all flatCollect: [ :universe | universe spaces ]) select: [ :space | space root children anySatisfy: [ :child | child class = ProliExSimplierExample ]]) first.
+
+header := (space root children first childWithId: #main) childWithId: #header.
+
+
+allDynamicLinks := OrderedCollection new.
+header withAllChildrenBreadthFirstDo: [ :child | 
+	allDynamicLinks addAll: (ProliDynamicLinksRepository unique selectAllLinksWithObject: child) ].
+(allDynamicLinks collect: #requirementReference) inspect.''
 '
 ]
 
