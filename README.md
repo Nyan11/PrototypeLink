@@ -44,10 +44,6 @@ Metacello new
    load.
 ```
 
-![Capture d'écran 2023-10-26 144324](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/f340641d-3d4f-4304-971a-8b319eb68c4b)
-
-It is possible that a window open asking you your author name, the name you enter is only use locally to identify the changes from the source code. Enter a name without space and click on `OK`.
-
 ![Capture d'écran 2023-10-26 115727](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/c8ca385a-5ea1-4385-ae20-74d5f2554fb7)
 
 ## Dependencies
