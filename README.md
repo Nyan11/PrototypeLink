@@ -39,8 +39,8 @@ To install the project on your Pharo image you can just copy and paste the follo
 ```smalltalk
 Metacello new
    baseline: 'PrototypeLink';
-   repository: 'github://Nyan11/PrototypeLink:main/src';
-	 onConflictUseLoaded;
+   repository: 'github://Nyan11/PrototypeLink';
+   onConflictUseLoaded;
    load.
 ```
 
