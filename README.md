@@ -44,8 +44,6 @@ Metacello new
    load.
 ```
 
-![Capture d'écran 2023-10-26 115727](https://github.com/OpenSmock/Molecule-Geographical-Position-Example/assets/34318678/c8ca385a-5ea1-4385-ae20-74d5f2554fb7)
-
 ## Dependencies
 
 + [Bloc](https://github.com/pharo-graphics/Bloc) - Low-level UI infrastructure & framework for Pharo.
