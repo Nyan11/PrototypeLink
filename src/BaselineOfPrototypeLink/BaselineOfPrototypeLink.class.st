@@ -23,19 +23,23 @@ BaselineOfPrototypeLink >> baselineForCommon: spec [
 
 	"Dependencies"
 
-	"Bloc package for the example."
+	"Toplo package for the example."
 
 	<baseline>
 	spec
-		baseline: 'Bloc'
-		with: [ spec repository: 'github://pharo-graphics/Bloc:master' ].
+		baseline: 'Toplo'
+		with: [ spec repository: 'github://pharo-graphics/Toplo:master' ].
 
 	"Packages"
 	spec package: 'PrototypeLink'.
-	spec package: 'PrototypeLink-Example' with: [ spec requires: #( 'PrototypeLink' 'Bloc' ) ].
+	spec
+		package: 'PrototypeLink-Example'
+		with: [ spec requires: #( 'PrototypeLink' 'Bloc' ) ].
 
 	"Groups"
-	spec group: 'default' with: #( 'PrototypeLink' 'PrototypeLink-Example' ) "complete version"
+	spec
+		group: 'default'
+		with: #( 'PrototypeLink' 'PrototypeLink-Example' ) "complete version"
 ]
 
 { #category : 'actions' }
